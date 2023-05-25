@@ -14627,13 +14627,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Functions for DS1 Tasks (Used for DS2/3)</span>
 
 <span class="c1"># Task 1</span>
-<span class="c1"># Create a non-linearly separable dataset (varying C value impactful on non-linearly separable data)</span>
+<span class="c1"># Create a non-linearly separable dataset (varying C value impactful on overlapping nonlinearly separable data)</span>
 <span class="k">def</span> <span class="nf">GenerateNonLinearlySeparableDatasetDS1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                             <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">class_sep</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -14715,7 +14715,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function Calls for DS1 Tasks</span>
@@ -14888,7 +14888,7 @@ Accuracy on Testing Set: 76.00%
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function Calls for DS2 Tasks</span>
@@ -15002,7 +15002,7 @@ Accuracy on Testing Set: 79.60%
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>DS2 Task 3 - Explain which kernel you chose and why?</p>
 <p>Firstly, to evaluate the performance metrics with SVMs fit to DS2 I continued using Leave-One-Out Cross Validation (LOOCV) despite the increase in dataset size. This is because LOOCV provides a strong unbiased estimate of test performance, and the trade-off with computational expense was not significant enough to change to an alternative evaluation method such as 5 or 10 fold Cross Validation. There were also no extreme outliers so LOOCV was perfectly suitable.</p>
-<p>The data from inspection can be seen as non-linearly separable so fitting a linear SVM is highly suboptimal in this case and this is reflected in the performance metrics of the linear SVM and the fact that the plot does not contain the decision boundary as it not apparent in the original feature space. To better handle DS2 I used a non-linear kernel function, Radial Based Function (RBF). I did this as it utilizes the kernel trick and it essentially maps the data into a higher dimensional feature space where it possibly becomes linearly separable. This allows the SVM to capture non-linear relationships between the data points and achieve better classification performance.</p>
+<p>The data from inspection can be seen as non-linearly separable so fitting a linear SVM is highly suboptimal in this case and this is reflected in the performance metrics of the linear SVM and the fact that the plot does not contain the decision boundary as it not apparent in the original feature space. This is common when using a linear decision boundary working with non-linearly separable data. To better handle DS2 I used a non-linear kernel function, Radial Based Function (RBF). I did this as it utilizes the kernel trick and it essentially maps the data into a higher dimensional feature space where it possibly becomes linearly separable. This allows the SVM to capture non-linear relationships between the data points and achieve better classification performance.</p>
 <hr>
 <p>Linear Kernel</p>
 <p>SVM Performance Metrics using LOO Cross Validation with C=10</p>
@@ -15192,7 +15192,7 @@ Accuracy on Testing Set: 97.00%
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>DS3 Task 3 - Explain the results of the previous step</p>
-<p>DS3 from visual inspection appears to be linearly separable in nature, and this is reflected in the significantly good performance metrics of the linear SVM with a C value of unknown optimality. However, it was out of interest that I fit a non linear (RBF) SVM to DS3 despite in reality it not being necessary or beneficial in this given case. Non-linear SVMs and RBFs in specific have a gamma parameter (hyper-parameter) and it controls the influence of each individual training instance on the decision boundary. A smaller gamma value correlates to a softer/smoother decision boundary with a larger radius, while a larger gamma value correlates to a more irregular/complex decision boundary and smaller radius. The C parameter is a generalised hyperparameter to all SVM models and as stated before it controls the trade-off between minimising the margin and minimising training error. Both hyper-parameters were optimised using K-Fold CV (k=5), and have optimal values of C = 10 and Gamma = 1.</p>
+<p>DS3 from visual inspection appears to be linearly separable in nature, and this is reflected in the significantly good performance metrics of the linear SVM with a C value of unknown optimality. However, it was out of interest that I fit a non linear (RBF) SVM to DS3. My reasoning for using a non-linear (RBF) SVM would be to evaluate if fitting a more complex decision boundary would improve model performance as the separability of the distinct labels may do a better job however again it comes at the cost of generalizability as the linear SVM performs perfectly well. Non-linear SVMs and RBFs in specific have a gamma parameter (hyper-parameter) and it controls the influence of each individual training instance on the decision boundary. A smaller gamma value correlates to a softer/smoother decision boundary with a larger radius, while a larger gamma value correlates to a more irregular/complex decision boundary and smaller radius. The C parameter is a generalized hyperparameter to all SVM models and as stated before it controls the trade-off between minimizing the margin and minimizing training error. Both hyper-parameters were optimized using K-Fold CV (k=5), and have optimal values of C = 10 and Gamma = 1. Optimizing these parameters strikes the best balance between the given trade-offs to favor performance.</p>
 <p>The RBF non linear SVM outperforms the linear SVM despite both performing extremely well on the given dataset. The performance gap is slight and it is clear that the non-linear is more overfit to this given dataset hence the higher training accuracy. The data is also just very separated naturally and visually the non-linear model has less misclassified instances due to more complex decision boundaries and so it makes sense that the test accuracy (unbiased estimate) also is higher than that of the linear SVM. Overall, a linear SVM in this situation is more appropriate as there are no complex non linear relationships needing to be capture as the data is linearly separable in the original feature space and so there is no requirement for the additional computational expense and in other circumstances of linearly separable data the RBF model may overfit and perform worse when it comes to predicting new instances.</p>
 <hr>
 <p>Linear Kernel</p>
